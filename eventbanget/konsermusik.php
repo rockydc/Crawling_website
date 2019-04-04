@@ -1,14 +1,12 @@
 <?php
-
-
 include 'koneksi.php';
 		include("simple_html_dom.php");
-		$html = file_get_html('http://eventbanget.com/kompetisi/');
+		$html = file_get_html('http://eventbanget.com/musik/');
 		$obj = json_decode($html,true);
 		$no = 0;
 		
 	
-	foreach($html->find('.ev_ftImg') as $element){
+		foreach($html->find('.ev_ftImg') as $element){
 		$image[] =  $element->getAttribute('data-img');
 		}
 	
@@ -48,8 +46,7 @@ include 'koneksi.php';
 
 	
 		}
-		$str = $tempat[0];
-		
+	
 		
 		$jmldata =count($nama_event);
 		for($x=0; $x<$jmldata; $x++) {
@@ -60,9 +57,9 @@ include 'koneksi.php';
 
 		}
 	
-		print_r($lokasi[0][3]);
+		print_r($nama_event);
 		// print_r($lokasi);
-		
+
 		
 		foreach($html->find('div[class=eventon_list_event evo_eventtop  event]') as $element){
 		$select = mysqli_query($koneksi,"select id_event from event where nama_event = '$nama_event[$no]' AND jenis = '$jenis[$no]' AND tanggal='$mulai[$no]'");	
@@ -76,7 +73,6 @@ include 'koneksi.php';
 				
 		}
 	   
-		header("location:konsermusik.php");
+		header("location:pameran.php");
 	   	
-
 	   	   ?>
