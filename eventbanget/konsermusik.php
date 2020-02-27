@@ -36,7 +36,7 @@ include 'koneksi.php';
 		foreach($html->find('span[class=evcal_event_types ett1]') as $element){
 			
 			
-		$jenis[] = $element->plaintext;
+		$jenis[] = substr(($element->plaintext),9);
 		}
 		
 
@@ -51,7 +51,7 @@ include 'koneksi.php';
 		$jmldata =count($nama_event);
 		for($x=0; $x<$jmldata; $x++) {
 
-		$mulai[] = $hari[$x].' '.$tanggal[$x].' '.$bulan[$x];
+		$mulai[] = $tanggal[$x].' '.$bulan[$x].' - '.$tanggal[$x].' '.$bulan[$x].' 2019';
 		$str = $tempat[$x];
 		$lokasi[]=explode(":",$str);
 

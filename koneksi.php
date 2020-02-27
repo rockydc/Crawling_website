@@ -1,5 +1,5 @@
 <?php 
-$koneksi = mysqli_connect("localhost","root","","ivent");
+$koneksi = mysqli_connect("sql7.main-hosting.eu","u652834639_ivent","kingzoker123","u652834639_ivent");
  
 // Check connection
 if (mysqli_connect_errno()){

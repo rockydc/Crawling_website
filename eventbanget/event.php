@@ -38,7 +38,7 @@ include 'koneksi.php';
 		foreach($html->find('span[class=evcal_event_types ett1]') as $element){
 			
 			
-		$jenis[] = $element->plaintext;
+		$jenis[] = substr(($element->plaintext),9);
 		}
 		
 
@@ -54,13 +54,13 @@ include 'koneksi.php';
 		$jmldata =count($nama_event);
 		for($x=0; $x<$jmldata; $x++) {
 
-		$mulai[] = $hari[$x].' '.$tanggal[$x].' '.$bulan[$x];
+		$mulai[] = $tanggal[$x].' '.$bulan[$x].' - '.$tanggal[$x].' '.$bulan[$x].' 2019';
 		$str = $tempat[$x];
 		$lokasi[]=explode(":",$str);
 
 		}
 	
-		print_r($lokasi[0][3]);
+		print_r($mulai);
 		// print_r($lokasi);
 		
 		
@@ -71,9 +71,9 @@ include 'koneksi.php';
 		if($d > 0){
 		}else{
 			mysqli_query($koneksi,"insert into event (id_event, nama_event, jenis, tanggal, lokasi, link_detail, gambar)values('','$nama_event[$no]','$jenis[$no]','$mulai[$no]','".$lokasi[$no][3]."','$link[$no]','$image[$no]')");
-			$no++;
+			
 		}
-				
+				$no++;
 		}
 	   
 		header("location:konsermusik.php");

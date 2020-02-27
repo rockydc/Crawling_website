@@ -40,13 +40,16 @@ include 'koneksi.php';
 		$d = mysqli_num_rows($select);
 		
 		if($d > 0){
+			mysqli_query($koneksi, "
+				update event set tanggal='$tanggal[$no]', jenis='$jenis[$no]' where nama_event='$nama_event[$no] AND jenis!='$jenis[$no]' AND tanggal!='$tanggal[$no]' ");
 		}else{
 			mysqli_query($koneksi,"insert into event (id_event, nama_event, jenis, tanggal, waktu, lokasi, link_detail, gambar)values('','$nama_event[$no]','$jenis[$no]','$tanggal[$no]','$waktu[$no]','$lokasi[$no]','$link[$no]','$image[$no]')");
 		}
 			$no++;
 		}
 	   
-		header("location:accommodation.php");
+	   echo'selesai';
+		// header("location:accommodation.php");
 	   	
 
 
